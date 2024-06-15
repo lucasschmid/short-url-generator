@@ -30,6 +30,13 @@ class User extends Model {
             timestamps: true,
         });
     }
+
+    static associate(models: any) {
+        User.hasMany(models.Url, {
+            foreignKey: 'id',
+            as: 'urls',
+        });
+    }
 }
 
 export default User;

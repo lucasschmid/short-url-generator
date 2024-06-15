@@ -17,7 +17,7 @@ class Url extends Model {
                 autoIncrement: true,
                 primaryKey: true,
             },
-            originalUrl: { 
+            originalUrl: {
                 type: DataTypes.TEXT,
                 allowNull: false,
             },
@@ -29,6 +29,12 @@ class Url extends Model {
             userId: {
                 type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: true,
+                references: {
+                    model: 'Users', // Nome da tabela de referência
+                    key: 'id',
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'SET NULL',
             },
             deletedAt: {
                 type: DataTypes.DATE,
@@ -45,6 +51,13 @@ class Url extends Model {
             tableName: 'Urls',
             timestamps: true,
             paranoid: true,
+        });
+    }
+
+    static associate(models: any) {
+        Url.belongsTo(models.User, {
+            foreignKey: 'userId',
+            as: 'user',
         });
     }
 }
