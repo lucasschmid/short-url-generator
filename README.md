@@ -46,6 +46,11 @@ CREATE TABLE `users` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+## Testes unitários
+
+Para executar os testes unitários, execute o comando `npm run test`.
+Para vizualizar a cobertura de testes nos arquivos, execute o comando `npm run test:coverage`.
+
 ## Postman Collection
 
 Para facilitar o teste da API, foi incluído uma coleção do Postman no projeto. Siga as instruções abaixo para importar e usar a coleção.
@@ -81,3 +86,10 @@ Certifique-se de configurar as variáveis de ambiente no Postman para armazenar 
 
 Para mais detalhes, consulte a descrição das requisições dentro do Postman após importar a coleção.
 
+## Melhorias
+
+1. Melhorar tratamentos de erros.
+2. Separar services, controllers e models em módulos.
+3. Assegurar que as respostas da API sigam um padrão consistente, incluindo códigos de status HTTP apropriados e estrutura de dados bem definida.
+4. Utilizar interfaces e tipagem mais adequados, sem utilizar any.
+5. Melhorar qualidade e cobertura de testes unitários, para demais arquivos.
