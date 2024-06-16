@@ -1,11 +1,20 @@
 # short-url-generator
-Um serviço de encurtamento de URLs simples e eficiente, desenvolvido com Node.js, Express, MySQL e Sequelize. Esta aplicação permite aos usuários encurtar URLs longas em links mais gerenciáveis e rastrear o número de cliques para cada URL encurtada.
+Um serviço de encurtamento de URLs simples e eficiente. Esta aplicação permite aos usuários encurtar URLs longas 
+em links mais gerenciáveis e rastrear o número de cliques para cada URL encurtada.
+
+## Tecnologias Utilizadas
+
+- **Backend**: Node.js, Express, TypeScript
+- **Banco de Dados**: Sequelize ORM com suporte para MySQL, PostgreSQL, SQLite
+- **Autenticação**: JWT (JSON Web Tokens)
+- **Hashing de Senhas**: bcrypt
+- **Testes**: Jest e Coverage
 
 ## Configurando o Ambiente de Desenvolvimento
 
 Primeiramente é necessário ter instalado ou configurado o banco de dados MySQL.
 
-1. Clone o repositório short-url-generator
+1. Clone o repositório short-url-generator na branch master
 2. Instale as dependências com `npm install`
 3. Crie um arquivo `.env` com as variáveis de ambiente necessárias:
     PORT=<Porta que o servidor deve rodar>
