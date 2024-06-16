@@ -18,6 +18,34 @@ Primeiramente é necessário ter instalado ou configurado o banco de dados MySQL
     BASE_URL=<URL base do sistema>
 4. Inicie o servidor de desenvolvimento com `npm run dev`
 
+Ele deverá criar automaticamente duas tabelas no banco de dados, uma onde mantém as Urls
+e conta os clicks, outra que mantém o usuário:
+
+CREATE TABLE `urls` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `originalUrl` text NOT NULL,
+  `shortUrl` varchar(6) NOT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL,
+  `click` int NOT NULL DEFAULT '0',
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `shortUrl` (`shortUrl`),
+  KEY `userId` (`userId`),
+  CONSTRAINT `urls_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 ## Postman Collection
 
 Para facilitar o teste da API, foi incluído uma coleção do Postman no projeto. Siga as instruções abaixo para importar e usar a coleção.
