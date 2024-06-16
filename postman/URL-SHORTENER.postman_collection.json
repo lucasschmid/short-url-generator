@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "47288269-93c4-4d3e-a5f0-ebc70588e4a2",
+		"name": "URL-SHORTENER",
+		"description": "Esta collection permite criar URLs curtas que redirecionam para as URLs originais.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18821303"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "registerUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"example@example.com\",\r\n  \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Realizar o cadastro de um usuário."
+					},
+					"response": []
+				},
+				{
+					"name": "loginAuth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"access_token\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"example@example.com\",\r\n  \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Permite realizar o login de um usuário, gerando um token, esse token é armazenado na variável access_token da collection."
+					},
+					"response": []
+				}
+			],
+			"description": "Registrar e realizar login respectivamente."
+		},
+		{
+			"name": "URL",
+			"item": [
+				{
+					"name": "shortenUrl",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"originalUrl\": \"https://example.com.br\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/shorten",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shorten"
+							]
+						},
+						"description": "Permite encurtar uma URL para usuários logados, utilizando um token Bearer na requisição, assim como para usuários não logados, sem a necessidade de um token."
+					},
+					"response": []
+				},
+				{
+					"name": "redirectToShortUrl",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/:shortUrl",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								":shortUrl"
+							],
+							"variable": [
+								{
+									"key": "shortUrl",
+									"value": ""
+								}
+							]
+						},
+						"description": "Redireciona via URL encurtada, precisa informar no shortUrl o código encurtado da url, para a URL de destino, contabilizando os clicks."
+					},
+					"response": []
+				}
+			],
+			"description": "Encurtar URL e redirecionar para destino respectivamente."
+		},
+		{
+			"name": "Authenticated",
+			"item": [
+				{
+					"name": "listUrls",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/list",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"list"
+							]
+						},
+						"description": "Permite listar as URLs encurtadas do usuário logado, lembrando de informar no Header, o Authorization com o Bearer token."
+					},
+					"response": []
+				},
+				{
+					"name": "updateUrl",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"originalUrl\": \"https://example.com.br\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Permite alterar uma determinada URL encurtada do usuário logado, informando como id, o id da URL que deseja alterar, lembrando de informar no Header, o Authorization com o Bearer token."
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUrls",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Permite deletar logicamente uma determinada URL encurtada do usuário logado, informando como id, o id da URL que deseja deletar, lembrando de informar no Header, o Authorization com o Bearer token."
+					},
+					"response": []
+				}
+			],
+			"description": "Listar URLs do usuário, alterar URL destino e deletar lógicamente uma URL."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
