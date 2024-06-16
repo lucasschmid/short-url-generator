@@ -102,3 +102,4 @@ Para mais detalhes, consulte a descrição das requisições dentro do Postman a
 3. Assegurar que as respostas da API sigam um padrão consistente, incluindo códigos de status HTTP apropriados e estrutura de dados bem definida.
 4. Utilizar interfaces e tipagem mais adequados, sem utilizar any.
 5. Melhorar qualidade e cobertura de testes unitários, para demais arquivos.
+6. Validar dependências glob@7.2.3 e inflight@1.0.6, pois são mais suportadas.
