@@ -5,9 +5,9 @@ Um serviço de encurtamento de URLs simples e eficiente, desenvolvido com Node.j
 
 Primeiramente é necessário ter instalado ou configurado o banco de dados MySQL.
 
-1. Clone o repositório short-url-generator
+1. Clone o repositório short-url-generator na branch master
 2. Instale as dependências com `npm install`
-3. Crie um arquivo `.env` com as variáveis de ambiente necessárias:
+3. Crie um arquivo `.env` na raiz do projeto com as variáveis de ambiente necessárias:
     PORT=<Porta que o servidor deve rodar>
     DB_HOST=<Host de conexão ao database>
     DB_PORT=<Porta de conexão ao database>
