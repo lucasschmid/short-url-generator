@@ -13,7 +13,6 @@ describe('updateUrl function', () => {
     });
 
     it('should update a URL when provided valid id, originalUrl, and userId', async () => {
-        // Mock data
         const mockId = 1;
         const mockOriginalUrl = 'https://updated-url.com';
         const mockUserId = 1;

@@ -30,7 +30,7 @@ class Url extends Model {
                 type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: true,
                 references: {
-                    model: 'Users', // Nome da tabela de referência
+                    model: 'Users',
                     key: 'id',
                 },
                 onUpdate: 'CASCADE',
