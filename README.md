@@ -14,7 +14,7 @@ em links mais gerenciáveis e rastrear o número de cliques para cada URL encurt
 
 Primeiramente é necessário ter instalado ou configurado o banco de dados MySQL.
 
-1. Clone o repositório short-url-generator na branch master
+1. Clone o repositório short-url-generator na branch main
 2. Instale as dependências com `npm install`
 3. Crie um arquivo `.env` na raiz do projeto com as variáveis de ambiente necessárias:
     PORT=<Porta que o servidor deve rodar>
