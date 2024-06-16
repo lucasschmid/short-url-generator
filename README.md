@@ -14,9 +14,9 @@ em links mais gerenciáveis e rastrear o número de cliques para cada URL encurt
 
 Primeiramente é necessário ter instalado ou configurado o banco de dados MySQL.
 
-1. Clone o repositório short-url-generator na branch master
+1. Clone o repositório short-url-generator na branch main
 2. Instale as dependências com `npm install`
-3. Crie um arquivo `.env` com as variáveis de ambiente necessárias:
+3. Crie um arquivo `.env` na raiz do projeto com as variáveis de ambiente necessárias:
     PORT=<Porta que o servidor deve rodar>
     DB_HOST=<Host de conexão ao database>
     DB_PORT=<Porta de conexão ao database>
@@ -102,3 +102,4 @@ Para mais detalhes, consulte a descrição das requisições dentro do Postman a
 3. Assegurar que as respostas da API sigam um padrão consistente, incluindo códigos de status HTTP apropriados e estrutura de dados bem definida.
 4. Utilizar interfaces e tipagem mais adequados, sem utilizar any.
 5. Melhorar qualidade e cobertura de testes unitários, para demais arquivos.
+6. Validar dependências glob@7.2.3 e inflight@1.0.6, pois são mais suportadas.
